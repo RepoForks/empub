@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">EmPub Reader</string>
+	<string name="empub_exception_json">Exception loading book contents JSON</string>
+	<string name="empub_toc">Table of Contents</string>
+	<string name="empub_zoom_caption">Zoom:</string>
+
+</resources>
