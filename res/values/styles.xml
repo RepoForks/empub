@@ -1,0 +1,9 @@
+<resources>
+
+	<declare-styleable name="ProgressBar">
+
+		<!-- Defines the maximum value the progress can take. -->
+		<attr name="max" format="integer"/>
+	</declare-styleable>
+
+</resources>

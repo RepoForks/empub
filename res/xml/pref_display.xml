@@ -1,0 +1,17 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:empub="http://schemas.android.com/apk/res-auto">
+
+	<com.commonsware.empub.SeekBarPreference
+		android:defaultValue="100"
+		android:key="zoom"
+		empub:max="175"
+		android:summary="@string/empub_zoomsummary"
+		android:title="@string/empub_zoomtitle"/>
+
+	<CheckBoxPreference
+		android:defaultValue="true"
+		android:key="saveLastPosition"
+		android:summary="@string/empub_lastpositionsummary"
+		android:title="@string/empub_lastpositiontitle"/>
+
+</PreferenceScreen>

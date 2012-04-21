@@ -11,7 +11,23 @@
 
 package com.commonsware.empub;
 
-public interface NavListener {
-  void onInternalLinkClicked(String url);
-  void onExternalLinkClicked(String url);
+import java.util.List;
+import android.os.Build;
+import android.os.Bundle;
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+
+public class Preferences extends SherlockPreferenceActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    if (Build.VERSION.SDK_INT<Build.VERSION_CODES.HONEYCOMB) {
+      addPreferencesFromResource(R.xml.pref_display);
+    }
+  }
+  
+  @Override
+  public void onBuildHeaders(List<Header> target) {
+    loadHeadersFromResource(R.xml.preference_headers, target);
+  }
 }

@@ -1,0 +1,12 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<header
+		android:fragment="com.commonsware.empub.StockPreferenceFragment"
+		android:summary="@string/empub_prefdesc"
+		android:title="@string/empub_preftitle">
+		<extra
+			android:name="resource"
+			android:value="pref_display"/>
+	</header>
+
+</preference-headers>
