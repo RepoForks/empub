@@ -1,24 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item
-    android:id="@+id/empub_settings"
-    android:title="@string/empub_settings"
-    android:icon="@android:drawable/ic_menu_preferences"
-    android:showAsAction="never">
-  </item>
-	
-  <item
-    android:id="@+id/empub_help"
-    android:title="@string/empub_help"
-    android:icon="@android:drawable/ic_menu_help"
-    android:showAsAction="never">
-  </item>
+<!-- 	<item -->
+<!-- 		android:id="@+id/empub_update" -->
+<!-- 		android:icon="@drawable/ic_menu_download" -->
+<!-- 		android:title="@string/empub_update" -->
+<!-- 		android:visible="false"> -->
+<!-- 	</item> -->
+	<item
+		android:id="@+id/empub_settings"
+		android:icon="@android:drawable/ic_menu_preferences"
+		android:showAsAction="never"
+		android:title="@string/empub_settings">
+	</item>
+	<item
+		android:id="@+id/empub_help"
+		android:icon="@android:drawable/ic_menu_help"
+		android:showAsAction="never"
+		android:title="@string/empub_help">
+	</item>
+	<item
+		android:id="@+id/empub_about"
+		android:icon="@android:drawable/ic_menu_info_details"
+		android:showAsAction="never"
+		android:title="@string/empub_about">
+	</item>
 
-  <item
-    android:id="@+id/empub_about"
-    android:title="@string/empub_about"
-    android:icon="@android:drawable/ic_menu_info_details"
-    android:showAsAction="never">
-  </item>
-  
 </menu>

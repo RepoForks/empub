@@ -13,7 +13,7 @@ package com.commonsware.empub;
 
 import android.os.Bundle;
 
-public class SimpleContentFragment extends ContentFragment {
+public class SimpleContentFragment extends AbstractContentFragment {
   private static final String KEY_FILE="file";
 
   protected static SimpleContentFragment newInstance(String file) {

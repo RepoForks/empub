@@ -7,11 +7,22 @@
 	<string name="empub_help">Help</string>
 	<string name="empub_cover">Cover</string>
 	<string name="empub_preftitle">Display &amp; Navigation</string>
-	<string name="empub_prefdesc">Settings for use of EmPub</string>
 	<string name="empub_settings">Settings</string>
 	<string name="empub_lastpositiontitle">Save Last Position</string>
 	<string name="empub_lastpositionsummary">Save the last chapter you were viewing and open up on that chapter when re-opening the app</string>
 	<string name="empub_zoomtitle">Text Zoom Level</string>
-	<string name="empub_zoomsummary">Size of font as percentage of normal (25-200%)</string>
-
+	<string name="empub_zoomsummary">Size of font as percentage of normal (25–200%)</string>
+	<string name="empub_keepscreenon_summary">Keep the screen powered on while the reader is in the foreground</string>
+	<string name="empub_keepscreenon_title">Keep Screen On</string>
+  <string name="empub_update_title">EmPub Update</string>
+  <string name="empub_update_description">A new edition of the book</string>
+  <string name="empub_download_complete">Book Update Download Complete!</string>
+  <string name="empub_download_install">Tap to install the update</string>
+  <string name="empub_update">Update</string>
+  <string name="empub_uptodate">You are up to date!</string>
+  <string name="error_trying_update">"Error trying update: "</string>
+  <string name="no_update_available">No update available</string>
+  <string name="empub_internalbackstack_title">BACK Navigates Chapters</string>
+  <string name="empub_internalbackstack_summary">Check this if you want the BACK button to move you to the chapter you had been viewing previously. Ignores the cover and table of contents. Leave unchecked for BACK to exit the app.</string>
+  <string name="empub_prefnavtitle">Navigation</string>
 </resources>

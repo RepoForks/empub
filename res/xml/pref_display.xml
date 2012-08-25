@@ -4,14 +4,24 @@
 	<com.commonsware.empub.SeekBarPreference
 		android:defaultValue="100"
 		android:key="zoom"
-		empub:max="175"
 		android:summary="@string/empub_zoomsummary"
-		android:title="@string/empub_zoomtitle"/>
+		android:title="@string/empub_zoomtitle"
+		empub:max="250"/>
 
 	<CheckBoxPreference
 		android:defaultValue="true"
 		android:key="saveLastPosition"
 		android:summary="@string/empub_lastpositionsummary"
 		android:title="@string/empub_lastpositiontitle"/>
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="keepScreenOn"
+		android:summary="@string/empub_keepscreenon_summary"
+		android:title="@string/empub_keepscreenon_title"/>
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="internalBackStack"
+		android:summary="@string/empub_internalbackstack_summary"
+		android:title="@string/empub_internalbackstack_title"/>
 
 </PreferenceScreen>

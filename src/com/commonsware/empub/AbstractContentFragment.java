@@ -11,12 +11,15 @@
 
 package com.commonsware.empub;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-abstract public class ContentFragment extends WebViewFragment {
+abstract public class AbstractContentFragment extends WebViewFragment {
   abstract String getPage();
 
   @Override
@@ -26,6 +29,8 @@ abstract public class ContentFragment extends WebViewFragment {
     setRetainInstance(true);
   }
 
+  @SuppressLint("SetJavaScriptEnabled")
+  @TargetApi(11)
   @Override
   public View onCreateView(LayoutInflater inflater,
                            ViewGroup container,
@@ -34,7 +39,13 @@ abstract public class ContentFragment extends WebViewFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
     getWebView().getSettings().setJavaScriptEnabled(true);
-
+    getWebView().getSettings().setSupportZoom(true);
+    getWebView().getSettings().setBuiltInZoomControls(true);
+    
+    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB) {
+      getWebView().getSettings().setDisplayZoomControls(false);
+    }
+    
     getWebView().loadUrl(getPage());
 
     return(result);

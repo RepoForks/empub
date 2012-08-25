@@ -12,13 +12,16 @@
 package com.commonsware.empub;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import com.actionbarsherlock.app.SherlockFragment;
@@ -37,10 +40,20 @@ public class ModelFragment extends SherlockFragment {
     setRetainInstance(true);
     deliverModel();
   }
+  
+  SharedPreferences getPrefs() {
+    return(prefs);
+  }
+  
+  BookContents getContents() {
+    return(contents);
+  }
 
   synchronized private void deliverModel() {
     if (prefs != null && contents != null) {
-      ((EmPubActivity)getActivity()).setupPager(prefs, contents);
+      if (getActivity()!=null) {
+        ((EmPubActivity)getActivity()).setupPager(prefs, contents);
+      }
     }
     else {
       if (prefs == null && prefsTask == null) {
@@ -57,6 +70,7 @@ public class ModelFragment extends SherlockFragment {
     }
   }
 
+  @TargetApi(11)
   static public <T> void executeAsyncTask(AsyncTask<T, ?, ?> task,
                                           T... params) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -92,6 +106,15 @@ public class ModelFragment extends SherlockFragment {
 
     @Override
     protected Void doInBackground(Context... ctxt) {
+//      File update=
+//          new File(
+//                   Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+//                   DownloadCheckTask.UPDATE_FILENAME);
+//      
+//      if (update.exists()) {
+//        update.delete();
+//      }
+      
       try {
         StringBuilder buf=new StringBuilder();
         InputStream json=

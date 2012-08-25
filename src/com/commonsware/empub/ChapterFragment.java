@@ -11,13 +11,14 @@
 
 package com.commonsware.empub;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class ChapterFragment extends ContentFragment {
+public class ChapterFragment extends AbstractContentFragment {
   private static final String KEY_FILE="file";
   private int zoomLevel=100;
 
@@ -89,6 +90,7 @@ public class ChapterFragment extends ContentFragment {
     }
   }
   
+  @TargetApi(14)
   private void updateZoom() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
       getWebView().getSettings().setTextZoom(zoomLevel);

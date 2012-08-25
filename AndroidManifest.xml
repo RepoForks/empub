@@ -5,6 +5,28 @@
 	android:versionCode="1"
 	android:versionName="1.0">
 
-	<application />
+	<uses-sdk
+		android:minSdkVersion="8"
+		android:targetSdkVersion="11"/>
+
+	<application>
+		<activity android:name="EmPubActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="SimpleContentActivity"/>
+		<activity android:name="Preferences"/>
+
+		<receiver
+			android:name="DownloadCompleteReceiver"
+			android:enabled="false">
+			<intent-filter>
+				<action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+			</intent-filter>
+		</receiver>
+	</application>
 
 </manifest>
