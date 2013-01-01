@@ -9,6 +9,8 @@
 		android:minSdkVersion="8"
 		android:targetSdkVersion="11"/>
 
+	<uses-permission android:name="android.permission.INTERNET"/>
+
 	<application>
 		<activity android:name="EmPubActivity">
 			<intent-filter>
@@ -18,6 +20,7 @@
 			</intent-filter>
 		</activity>
 		<activity android:name="SimpleContentActivity"/>
+		<activity android:name="ImageActivity"/>
 		<activity android:name="Preferences"/>
 
 		<receiver

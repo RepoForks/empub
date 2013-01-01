@@ -12,13 +12,19 @@
 package com.commonsware.empub;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebView.HitTestResult;
 import android.webkit.WebViewClient;
 
-public class ChapterFragment extends AbstractContentFragment {
+public class ChapterFragment extends AbstractContentFragment implements
+    OnLongClickListener {
   private static final String KEY_FILE="file";
   private int zoomLevel=100;
 
@@ -37,10 +43,10 @@ public class ChapterFragment extends AbstractContentFragment {
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
 
-    // following required due to bug
     // http://code.google.com/p/android/issues/detail?id=3440
     getWebView().getSettings().setBuiltInZoomControls(false);
     getWebView().setWebViewClient(new ChapterClient());
+    getWebView().setOnLongClickListener(this);
     updateZoom();
 
     final String anchor=
@@ -57,12 +63,27 @@ public class ChapterFragment extends AbstractContentFragment {
       }, 1000);
     }
   }
-  
+
   @Override
   public void onResume() {
     super.onResume();
-    
+
     setZoom(((EmPubActivity)getActivity()).getZoom());
+  }
+
+  @Override
+  public boolean onLongClick(View v) {
+    HitTestResult hit=getWebView().getHitTestResult();
+
+    if (hit.getType() == HitTestResult.IMAGE_TYPE
+        || hit.getType() == HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+      Intent i=new Intent(getActivity(), ImageActivity.class);
+      
+      i.putExtra(ImageActivity.EXTRA_FILE, Uri.parse(hit.getExtra()).getLastPathSegment());
+      startActivity(i);
+    }
+
+    return false;
   }
 
   @Override
@@ -84,12 +105,12 @@ public class ChapterFragment extends AbstractContentFragment {
 
   void setZoom(int zoomLevel) {
     this.zoomLevel=zoomLevel;
-    
-    if (getWebView()!=null) {
+
+    if (getWebView() != null) {
       updateZoom();
     }
   }
-  
+
   @TargetApi(14)
   private void updateZoom() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
