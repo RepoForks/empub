@@ -183,21 +183,24 @@ public class EmPubActivity extends SherlockFragmentActivity implements
   @Override
   public void onInternalLinkClicked(String url) {
     String[] pieces=url.substring(CONTENT_PREFIX.length()).split("#");
-    int position=getContents().getPositionForFile(pieces[0]);
 
-    if (pieces.length == 2) {
-      anchors.put(pieces[0].substring(5), pieces[1]);
+    if (pieces[0].length() > 5) {
+      int position=getContents().getPositionForFile(pieces[0]);
 
-      ChapterFragment frag=
-          (ChapterFragment)adapter.getActiveFragment(pager,
-                                                     position + 2);
+      if (pieces.length == 2) {
+        anchors.put(pieces[0].substring(5), pieces[1]);
 
-      if (frag != null) {
-        frag.jumpTo(pieces[1]);
+        ChapterFragment frag=
+            (ChapterFragment)adapter.getActiveFragment(pager,
+                                                       position + 2);
+
+        if (frag != null) {
+          frag.jumpTo(pieces[1]);
+        }
       }
-    }
 
-    pager.setCurrentItem(position + 2, false);
+      pager.setCurrentItem(position + 2, false);
+    }
   }
 
   @Override
